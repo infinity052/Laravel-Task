@@ -14,10 +14,10 @@ class MyAtg extends Migration
     public function up()
     {
         Schema::create('myatg',function(Blueprint $table){
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email');
-            $table->integer('pincode');
+            $table->increments('id')->unique();
+            $table->string('name')->unique();
+            $table->string('email')->unique();
+            $table->integer('pincode')->unique();
         });
     }
 

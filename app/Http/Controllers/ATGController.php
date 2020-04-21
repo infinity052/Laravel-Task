@@ -10,9 +10,9 @@ class ATGController extends Controller
     public function store(Request $request){
         
        $validatedData = $request->validate([
-           'name'=>['required','max:255',],
-           'email'=>['required','email:rfc,dns'],
-           'pincode'=>['required','digits:6']
+           'name'=>['required','unique:myatg','max:255'],
+           'email'=>['required','unique:myatg','email:rfc,dns'],
+           'pincode'=>['required','unique:myatg','digits:6']
        ]);
         ATGModel::create($request->all());
         return view('success');
