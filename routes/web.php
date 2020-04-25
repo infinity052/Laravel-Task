@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('register');
 });
-// Route::post('success','PHPTrait@store');
+
 Route::post('api/addentry','WebServicesController@toArray');

@@ -21,7 +21,7 @@ class WebServicesController extends Controller
 
 
     public function toArray(Request $request)
-    {   
+    { 
         
        $status = 0;
        $rules = [
@@ -34,12 +34,12 @@ class WebServicesController extends Controller
         return ['status'=>0,'message'=>$validator->errors()];
     }
     $accountValid = true;
-    try{
-    $this->sendMail($request->email);
-    }catch(\Exception $e){
-        Log::debug($e);
-        $accountValid = false; 
-    }
+    // try{
+    // $this->sendMail($request->email);
+    // }catch(\Exception $e){
+    //     Log::debug($e);
+    //     $accountValid = false; 
+    // }
     if($accountValid) {
         Log::debug('Email Sent');
         ATGModel::create($request->all());
@@ -57,7 +57,7 @@ class WebServicesController extends Controller
        }else{
            return [
         'status'=>0,
-        'message'=>'Invalid Email Address, Please enter a valid email address to store data'];
+        'message'=>['email'=>'Invalid Email Address, Please enter a valid email address to store data']];
        }
        
     }
